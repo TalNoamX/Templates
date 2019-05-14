@@ -1,23 +1,24 @@
-
+#pragma once
 namespace itertools
 {
 	template <class T, class W>
 	class chain
 	{
-	private:
-		T _firstKind;
-		W _secondKind;
-		
-		template <typename U, typename V>
+
+		template <class U, class V>
 		class iterator
 		{
 		public:
 			U itrU;
 			V itrV;
-			bool flag;
-			iterator(U it1, V it2) : itrU(it1), itrV(it2), flag(true) {}
+	
+			iterator(U it1, V it2) : itrU(it1), itrV(it2) {}
 		};
+
 	public:
+	
+		T _firstKind;
+		W _secondKind;
 
 		chain(T t, W w) : _firstKind(t), _secondKind(w) {}
 
@@ -28,7 +29,7 @@ namespace itertools
 
 		auto end()
 		{ 
-			return _secondKind.end();
+			return _firstKind.end();
 		}
 
 	};
